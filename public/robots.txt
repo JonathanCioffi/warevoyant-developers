@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://developers.warevoyant.com/sitemap.xml
