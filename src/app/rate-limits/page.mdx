@@ -1,0 +1,44 @@
+export const metadata = {
+  title: "Rate Limits",
+  description: "WareVoyant API rate limits, response headers, and best practices.",
+};
+
+# Rate Limits
+
+All API endpoints are rate-limited to protect service quality and ensure fair usage across all consumers.
+
+## Default limits
+
+| Scope | Limit | Window | Notes |
+|---|---|---|---|
+| Global (per IP) | 200 requests | 1 minute | Applies to all endpoints |
+| Per API key | 600 requests | 1 minute | 3x the per-session rate |
+| POST /api/auth/login | 15 requests | 1 minute | Brute-force protection |
+| POST /api/auth/verify-mfa | 10 requests | 1 minute | MFA abuse prevention |
+| POST /api/auth/register | 5 requests | 1 minute | Spam prevention |
+| POST /api/auth/forgot-password | 5 requests | 1 minute | Abuse prevention |
+
+## Response headers
+
+When you exceed a rate limit, the API returns a `429 Too Many Requests` status with a `Retry-After` header indicating how many seconds to wait before retrying.
+
+```
+HTTP/1.1 429 Too Many Requests
+Retry-After: 42
+Content-Type: application/json
+
+{
+  "error": {
+    "message": "Rate limit exceeded. Try again in 42 seconds.",
+    "code": "RATE_LIMITED"
+  }
+}
+```
+
+## Best practices
+
+- **Cache responses where possible.** If data does not change frequently, store it locally and reduce the number of API calls.
+- **Use exponential backoff on 429.** When you receive a rate limit response, wait for the `Retry-After` duration, then increase the delay on subsequent retries (e.g. 1s, 2s, 4s, 8s).
+- **Batch operations.** Where the API supports bulk endpoints, prefer a single batch call over many individual requests.
+- **Monitor your usage.** API key usage statistics are available in Settings &gt; Developer in the portal.
+- **Contact support for higher limits.** If your integration requires sustained throughput above the defaults, reach out to discuss an increased allocation.

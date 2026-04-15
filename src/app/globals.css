@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+:root {
+  --wv-dark: #231f20;
+  --wv-blue: #009dd2;
+  --wv-green: #58b947;
+  --wv-light-bg: #f8f7f5;
+  --wv-text: #1f2937;
+  --wv-text-muted: #6b7280;
+}
+
+body {
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  color: var(--wv-text);
+  background: var(--wv-light-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scalar docs page override — fill height */
+.scalar-container {
+  min-height: calc(100vh - 64px - 80px);
+}

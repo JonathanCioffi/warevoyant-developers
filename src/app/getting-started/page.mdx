@@ -1,0 +1,125 @@
+export const metadata = {
+  title: "Getting Started",
+  description: "Create your first API key and make your first WareVoyant API call.",
+};
+
+# Getting Started
+
+This guide walks you through creating an API key and making your first request to the WareVoyant API.
+
+## Prerequisites
+
+- A WareVoyant account with **portal admin** access
+- Access to [portal.warevoyant.com](https://portal.warevoyant.com)
+
+## Create an API key
+
+1. Log in to [portal.warevoyant.com](https://portal.warevoyant.com)
+2. Navigate to **Settings &gt; Developer**
+3. Click **Create API key**
+4. Give the key a descriptive name (e.g. "CI pipeline" or "Monitoring integration")
+5. Select the scopes the key needs (e.g. `sites.view`, `equipment.view`)
+6. Set an expiry date, or leave blank for no expiration
+7. Click **Create** and copy the key immediately -- you will not be able to see it again
+
+> Store your API key securely. Treat it like a password. Never commit it to source control.
+
+## Your first API call
+
+With your key in hand, try listing your sites:
+
+```bash
+curl -H "Authorization: Bearer wv_live_YOUR_KEY_HERE" \
+  https://api-production-566c.up.railway.app/api/sites
+```
+
+A successful response returns a JSON array of sites your key has access to:
+
+```json
+{
+  "data": [
+    {
+      "id": "site_abc123",
+      "name": "Main Campus AV",
+      "address": "123 Main St"
+    }
+  ]
+}
+```
+
+## Authentication
+
+All API requests require an `Authorization` header with a Bearer token. The API accepts two token types:
+
+- **API keys** (prefixed `wv_live_` or `wv_test_`) -- created in the Developer settings
+- **JWT session tokens** -- issued by the `/api/auth/login` endpoint
+
+```
+Authorization: Bearer wv_live_abc123def456
+```
+
+Requests without a valid token receive a `401 Unauthorized` response.
+
+## Error handling
+
+The API returns errors in a consistent shape:
+
+```json
+{
+  "error": {
+    "message": "API key does not have the required scope: sites.manage",
+    "code": "FORBIDDEN"
+  }
+}
+```
+
+### Common error codes
+
+| Status | Code | Meaning |
+|---|---|---|
+| 401 | `UNAUTHORIZED` | Missing or invalid token |
+| 403 | `FORBIDDEN` | Token is valid but lacks the required scope |
+| 404 | `NOT_FOUND` | Resource does not exist or is not accessible |
+| 422 | `VALIDATION_ERROR` | Request body failed validation |
+| 429 | `RATE_LIMITED` | Too many requests -- see [Rate Limits](/rate-limits) |
+
+## Scopes
+
+API keys are restricted to the scopes you select at creation time. Scopes follow the pattern `resource.action`.
+
+| Category | Scopes |
+|---|---|
+| Sites | `sites.view`, `sites.manage` |
+| Spaces | `spaces.view`, `spaces.manage` |
+| Equipment | `equipment.view`, `equipment.manage` |
+| Audits | `audits.view`, `audits.manage` |
+| Lifecycle | `lifecycle.view`, `lifecycle.manage` |
+| Incidents | `incidents.view`, `incidents.manage` |
+| Monitoring | `monitoring.view`, `monitoring.manage` |
+| Users | `users.view`, `users.manage` |
+| Reports | `reports.view`, `reports.manage` |
+| Documents | `documents.view`, `documents.manage` |
+| Integrations | `integrations.view`, `integrations.manage` |
+| Settings | `settings.view`, `settings.manage` |
+| Dashboard | `dashboard.view`, `dashboard.manage` |
+| Notifications | `notifications.view`, `notifications.manage` |
+| Winston AI | `winston.view`, `winston.manage` |
+| API Keys | `api-keys.view`, `api-keys.manage` |
+
+If a key attempts an action outside its scopes, the API returns `403 Forbidden`.
+
+## Key rotation
+
+You can rotate an API key from Settings &gt; Developer. When you rotate:
+
+1. A new key value is generated
+2. The old key remains valid for **24 hours** (grace period)
+3. After 24 hours, the old key is permanently revoked
+
+This lets you update integrations without downtime.
+
+## SDKs
+
+Official TypeScript and Python SDKs are coming soon. Check the [changelog](/changelog) for updates.
+
+In the meantime, the API follows standard REST conventions and works with any HTTP client.
