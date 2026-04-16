@@ -16,20 +16,32 @@ export default function DocsPage() {
           authentication: {
             preferredSecurityScheme: "apiKey",
           },
-          hiddenClients: [
-            "c",
-            "clojure",
-            "csharp",
-            "dart",
-            "http",
-            "java",
-            "kotlin",
-            "objc",
-            "ocaml",
-            "powershell",
-            "r",
-            "swift",
-          ],
+          hiddenClients: {
+            // Show only: Shell (curl), Node.js, Python
+            // Hide everything else entirely
+            c: true,
+            clojure: true,
+            csharp: true,
+            dart: true,
+            fsharp: true,
+            go: true,
+            http: true,
+            java: true,
+            js: true,
+            kotlin: true,
+            objc: true,
+            ocaml: true,
+            php: true,
+            powershell: true,
+            r: true,
+            ruby: true,
+            rust: true,
+            swift: true,
+            // Keep these visible (false = show all sub-clients)
+            shell: false,
+            node: false,
+            python: false,
+          },
         }}
       />
     </div>
