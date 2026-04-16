@@ -11,6 +11,8 @@ export default function DocsPage() {
           url: "/api/spec",
           theme: "kepler",
           darkMode: true,
+          forceDarkModeState: "dark",
+          hideDarkModeToggle: true,
           authentication: {
             preferredSecurityScheme: "apiKey",
           },
