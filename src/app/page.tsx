@@ -26,27 +26,40 @@ const features = [
 export default function HomePage() {
   return (
     <div>
-      {/* Hero */}
-      <section className="bg-[var(--wv-bg)]">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+      {/* Hero — full-bleed background image with gradient overlay.
+          To swap the image: drop a file at public/hero-bg.jpg (or .png/.webp).
+          The gradient overlay ensures text readability on any image. */}
+      <section className="relative isolate overflow-hidden">
+        {/* Background image layer */}
+        <div
+          className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/hero-bg.jpg')" }}
+        />
+        {/* Gradient overlay — ensures text contrast even on a bright image.
+            Bottom-heavy so the transition into the dark body bg is seamless. */}
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#231F20]/70 via-[#231F20]/60 to-[#231F20]" />
+        {/* Subtle fallback glow if no hero image is present yet */}
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(0,157,210,0.08)_0%,transparent_70%)]" />
+
+        <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-36 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-[var(--wv-text)] sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight text-white drop-shadow-lg sm:text-5xl lg:text-6xl">
               Build with the WareVoyant API
             </h1>
-            <p className="mt-6 text-lg leading-8 text-[var(--wv-text-muted)]">
+            <p className="mt-6 text-lg leading-8 text-gray-300 drop-shadow-sm sm:text-xl">
               Automate AV commissioning workflows, manage sites, equipment, and
               audits programmatically.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/getting-started"
-                className="rounded-lg bg-[var(--wv-green)] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[var(--wv-green-hover)]"
+                className="rounded-xl bg-[var(--wv-green)] px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-green-900/30 transition-all hover:bg-[var(--wv-green-hover)] hover:shadow-green-900/40"
               >
                 Get started
               </Link>
               <Link
                 href="/docs"
-                className="rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-[var(--wv-text)] shadow-sm transition-colors hover:border-white/30 hover:bg-white/10"
+                className="rounded-xl border border-white/20 bg-white/10 px-8 py-4 text-sm font-semibold text-white shadow-sm backdrop-blur-sm transition-all hover:border-white/30 hover:bg-white/15"
               >
                 View API docs
               </Link>
@@ -54,7 +67,7 @@ export default function HomePage() {
                 href={`${PORTAL_URL}/settings/developer`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-[var(--wv-text)] shadow-sm transition-colors hover:border-white/30 hover:bg-white/10"
+                className="rounded-xl border border-white/20 bg-white/10 px-8 py-4 text-sm font-semibold text-white shadow-sm backdrop-blur-sm transition-all hover:border-white/30 hover:bg-white/15"
               >
                 Manage keys
               </a>
@@ -64,7 +77,7 @@ export default function HomePage() {
       </section>
 
       {/* Feature cards */}
-      <section className="bg-[var(--wv-bg)]">
+      <section>
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
@@ -85,7 +98,7 @@ export default function HomePage() {
       </section>
 
       {/* Code sample */}
-      <section className="bg-[var(--wv-bg)]">
+      <section>
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl">
             <h2 className="mb-2 text-center text-2xl font-semibold text-[var(--wv-text)]">
