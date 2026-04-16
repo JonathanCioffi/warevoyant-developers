@@ -49,7 +49,7 @@ export default function HomePage() {
               <span className="text-[var(--wv-cyan)]">API.</span>
             </h1>
             <p className="mt-6 mb-[50px] text-lg leading-8 text-gray-300 drop-shadow-sm sm:text-xl">
-              Full array of endpoints. Fine-grained scopes. Built for the teams that build AV.
+              Complete platform access. Scoped permissions. Ship integrations, not workarounds.
             </p>
             <div className="mt-[50px] flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
