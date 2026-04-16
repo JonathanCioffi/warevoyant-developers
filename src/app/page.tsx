@@ -27,10 +27,10 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-white">
+      <section className="bg-[var(--wv-bg)]">
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-[var(--wv-dark)] sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight text-[var(--wv-text)] sm:text-5xl">
               Build with the WareVoyant API
             </h1>
             <p className="mt-6 text-lg leading-8 text-[var(--wv-text-muted)]">
@@ -40,13 +40,13 @@ export default function HomePage() {
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/getting-started"
-                className="rounded-lg bg-[var(--wv-blue)] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90"
+                className="rounded-lg bg-[var(--wv-green)] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[var(--wv-green-hover)]"
               >
                 Get started
               </Link>
               <Link
                 href="/docs"
-                className="rounded-lg border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-[var(--wv-dark)] shadow-sm transition-colors hover:bg-gray-50"
+                className="rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-[var(--wv-text)] shadow-sm transition-colors hover:border-white/30 hover:bg-white/10"
               >
                 View API docs
               </Link>
@@ -54,7 +54,7 @@ export default function HomePage() {
                 href={`${PORTAL_URL}/settings/developer`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-lg border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-[var(--wv-dark)] shadow-sm transition-colors hover:bg-gray-50"
+                className="rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-[var(--wv-text)] shadow-sm transition-colors hover:border-white/30 hover:bg-white/10"
               >
                 Manage keys
               </a>
@@ -64,15 +64,15 @@ export default function HomePage() {
       </section>
 
       {/* Feature cards */}
-      <section className="bg-[var(--wv-light-bg)]">
+      <section className="bg-[var(--wv-bg)]">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
               <div
                 key={feature.title}
-                className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm"
+                className="rounded-xl border border-white/10 bg-white/5 p-6 transition-colors hover:border-[var(--wv-orange)]/50"
               >
-                <h3 className="text-lg font-semibold text-[var(--wv-dark)]">
+                <h3 className="text-lg font-semibold text-[var(--wv-text)]">
                   {feature.title}
                 </h3>
                 <p className="mt-2 text-sm leading-6 text-[var(--wv-text-muted)]">
@@ -85,18 +85,20 @@ export default function HomePage() {
       </section>
 
       {/* Code sample */}
-      <section className="bg-white">
+      <section className="bg-[var(--wv-bg)]">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl">
-            <h2 className="mb-2 text-center text-2xl font-semibold text-[var(--wv-dark)]">
+            <h2 className="mb-2 text-center text-2xl font-semibold text-[var(--wv-text)]">
               Start in seconds
             </h2>
             <p className="mb-8 text-center text-sm text-[var(--wv-text-muted)]">
               One API key. One HTTP call. That is all it takes.
             </p>
-            <div className="overflow-hidden rounded-xl border border-gray-800 bg-gray-950">
-              <div className="flex items-center justify-between border-b border-gray-800 px-4 py-2">
-                <span className="font-mono text-xs text-gray-400">bash</span>
+            <div className="overflow-hidden rounded-xl border border-white/10 bg-black/40">
+              <div className="flex items-center justify-between border-b border-white/10 px-4 py-2">
+                <span className="font-mono text-xs text-[var(--wv-text-muted)]">
+                  bash
+                </span>
                 <CopyButton text={curlExample} />
               </div>
               <pre className="overflow-x-auto p-4 font-mono text-sm leading-relaxed text-gray-300">

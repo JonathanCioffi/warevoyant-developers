@@ -2,32 +2,32 @@ import type { MDXComponents } from "mdx/types";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    // Wrap default elements with WareVoyant styling
+    // Wrap default elements with WareVoyant dark-theme styling
     h1: ({ children }) => (
-      <h1 className="mb-6 text-3xl font-bold tracking-tight text-[var(--wv-dark)]">
+      <h1 className="mb-6 text-3xl font-bold tracking-tight text-[var(--wv-text)]">
         {children}
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="mb-4 mt-10 text-2xl font-semibold text-[var(--wv-dark)]">
+      <h2 className="mb-4 mt-10 text-2xl font-semibold text-[var(--wv-text)]">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="mb-3 mt-8 text-xl font-semibold text-[var(--wv-dark)]">
+      <h3 className="mb-3 mt-8 text-xl font-semibold text-[var(--wv-text)]">
         {children}
       </h3>
     ),
     p: ({ children }) => (
-      <p className="mb-4 leading-7 text-[var(--wv-text)]">{children}</p>
+      <p className="mb-4 leading-7 text-[var(--wv-text-muted)]">{children}</p>
     ),
     ul: ({ children }) => (
-      <ul className="mb-4 ml-6 list-disc space-y-2 text-[var(--wv-text)]">
+      <ul className="mb-4 ml-6 list-disc space-y-2 text-[var(--wv-text-muted)]">
         {children}
       </ul>
     ),
     ol: ({ children }) => (
-      <ol className="mb-4 ml-6 list-decimal space-y-2 text-[var(--wv-text)]">
+      <ol className="mb-4 ml-6 list-decimal space-y-2 text-[var(--wv-text-muted)]">
         {children}
       </ol>
     ),
@@ -37,7 +37,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       if (isInline) {
         return (
           <code
-            className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-sm text-[var(--wv-dark)]"
+            className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-sm text-[var(--wv-cyan)]"
             {...props}
           >
             {children}
@@ -47,7 +47,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return <code {...props}>{children}</code>;
     },
     pre: ({ children }) => (
-      <pre className="mb-6 overflow-x-auto rounded-lg bg-gray-950 p-4 text-sm">
+      <pre className="mb-6 overflow-x-auto rounded-lg border border-white/10 bg-black/40 p-4 text-sm">
         {children}
       </pre>
     ),
@@ -57,19 +57,19 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </div>
     ),
     th: ({ children }) => (
-      <th className="border-b border-gray-200 bg-gray-50 px-4 py-2 text-left font-semibold text-[var(--wv-dark)]">
+      <th className="border-b border-white/10 bg-white/5 px-4 py-2 text-left font-semibold text-[var(--wv-text)]">
         {children}
       </th>
     ),
     td: ({ children }) => (
-      <td className="border-b border-gray-100 px-4 py-2 text-[var(--wv-text)]">
+      <td className="border-b border-white/5 px-4 py-2 text-[var(--wv-text-muted)]">
         {children}
       </td>
     ),
     a: ({ children, href }) => (
       <a
         href={href}
-        className="text-[var(--wv-blue)] underline decoration-[var(--wv-blue)]/30 underline-offset-2 hover:decoration-[var(--wv-blue)]"
+        className="text-[var(--wv-cyan)] underline decoration-[var(--wv-cyan)]/30 underline-offset-2 hover:decoration-[var(--wv-cyan)]"
         target={href?.startsWith("http") ? "_blank" : undefined}
         rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
       >
@@ -77,7 +77,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </a>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="mb-4 border-l-4 border-[var(--wv-blue)] bg-blue-50/50 py-2 pl-4 text-[var(--wv-text)]">
+      <blockquote className="mb-4 border-l-4 border-[var(--wv-cyan)] bg-white/5 py-2 pl-4 text-[var(--wv-text-muted)]">
         {children}
       </blockquote>
     ),

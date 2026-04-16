@@ -23,7 +23,7 @@ const entries: ChangelogEntry[] = [
 export default function ChangelogPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
-      <h1 className="mb-2 text-3xl font-bold tracking-tight text-[var(--wv-dark)]">
+      <h1 className="mb-2 text-3xl font-bold tracking-tight text-[var(--wv-text)]">
         Changelog
       </h1>
       <p className="mb-12 text-[var(--wv-text-muted)]">
@@ -34,7 +34,7 @@ export default function ChangelogPage() {
         {entries.map((entry) => (
           <article
             key={entry.slug}
-            className="border-l-2 border-[var(--wv-blue)] pl-6"
+            className="border-l-2 border-[var(--wv-cyan)] pl-6"
           >
             <time className="text-sm font-medium text-[var(--wv-text-muted)]">
               {entry.date}

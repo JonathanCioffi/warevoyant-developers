@@ -2,16 +2,15 @@
 
 import { ApiReferenceReact } from "@scalar/api-reference-react";
 import "@scalar/api-reference-react/style.css";
-import { API_BASE_URL } from "@/lib/constants";
 
 export default function DocsPage() {
   return (
     <div className="scalar-container">
       <ApiReferenceReact
         configuration={{
-          url: `${API_BASE_URL}/api/openapi.json`,
+          url: "/api/spec",
           theme: "kepler",
-          darkMode: false,
+          darkMode: true,
           authentication: {
             preferredSecurityScheme: "apiKey",
           },

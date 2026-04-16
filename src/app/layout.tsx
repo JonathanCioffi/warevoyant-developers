@@ -1,18 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: {
@@ -37,9 +26,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-[var(--wv-light-bg)] antialiased`}
-      >
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/rbr8wxi.css" />
+      </head>
+      <body className="min-h-screen bg-[var(--wv-bg)] text-[var(--wv-text)] antialiased">
         <Header />
         <main className="min-h-[calc(100vh-64px-97px)]">{children}</main>
         <Footer />
