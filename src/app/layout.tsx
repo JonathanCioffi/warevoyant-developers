@@ -25,11 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ backgroundColor: "#231F20" }}>
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/rbr8wxi.css" />
       </head>
-      <body className="min-h-screen bg-[var(--wv-bg)] text-[var(--wv-text)] antialiased">
+      <body className="min-h-screen bg-[var(--wv-bg)] text-[var(--wv-text)] antialiased" style={{ backgroundColor: "#231F20", color: "#EAEBF2" }}>
         <Header />
         <main className="min-h-[calc(100vh-64px-97px)]">{children}</main>
         <Footer />

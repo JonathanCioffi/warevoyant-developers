@@ -44,11 +44,12 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-36 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight text-white drop-shadow-lg sm:text-5xl lg:text-6xl">
-              Build with the WareVoyant API
+              Your Data. Your Workflow.{" "}
+              <span className="text-[var(--wv-green)]">One</span>{" "}
+              <span className="text-[var(--wv-cyan)]">API</span>.
             </h1>
             <p className="mt-6 mb-[50px] text-lg leading-8 text-gray-300 drop-shadow-sm sm:text-xl">
-              Automate AV commissioning workflows, manage sites, equipment, and
-              audits programmatically.
+              439 endpoints. Fine-grained scopes. Built for the teams that build AV.
             </p>
             <div className="mt-[50px] flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
