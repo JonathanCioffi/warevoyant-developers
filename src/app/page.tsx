@@ -46,11 +46,11 @@ export default function HomePage() {
             <h1 className="text-4xl font-bold tracking-tight text-white drop-shadow-lg sm:text-5xl lg:text-6xl">
               Build with the WareVoyant API
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-300 drop-shadow-sm sm:text-xl">
+            <p className="mt-6 mb-[50px] text-lg leading-8 text-gray-300 drop-shadow-sm sm:text-xl">
               Automate AV commissioning workflows, manage sites, equipment, and
               audits programmatically.
             </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="mt-[50px] flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/getting-started"
                 className="rounded-xl bg-[var(--wv-green)] px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-green-900/30 transition-all hover:bg-[var(--wv-green-hover)] hover:shadow-green-900/40"
