@@ -46,10 +46,10 @@ export default function HomePage() {
             <h1 className="text-4xl font-bold tracking-tight text-white drop-shadow-lg sm:text-5xl lg:text-6xl">
               Your Data. Your Workflow.{" "}
               <span className="text-[var(--wv-green)]">One</span>{" "}
-              <span className="text-[var(--wv-cyan)]">API</span>.
+              <span className="text-[var(--wv-cyan)]">API.</span>
             </h1>
             <p className="mt-6 mb-[50px] text-lg leading-8 text-gray-300 drop-shadow-sm sm:text-xl">
-              439 endpoints. Fine-grained scopes. Built for the teams that build AV.
+              Full array of endpoints. Fine-grained scopes. Built for the teams that build AV.
             </p>
             <div className="mt-[50px] flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
