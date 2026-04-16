@@ -33,7 +33,7 @@ export default function HomePage() {
         {/* Background image layer */}
         <div
           className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/hero-bg.jpg')" }}
+          style={{ backgroundImage: "url('/hero-bg.jpeg')" }}
         />
         {/* Gradient overlay — ensures text contrast even on a bright image.
             Bottom-heavy so the transition into the dark body bg is seamless. */}
