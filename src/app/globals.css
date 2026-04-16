@@ -24,3 +24,16 @@ body {
 .scalar-container {
   min-height: calc(100vh - 64px - 80px);
 }
+
+/* Override Scalar's dark-mode palette to match WareVoyant's #231F20 bg.
+   Without this, Scalar's default dark-mode uses its own grays (~#202020)
+   which don't quite match the rest of the portal. */
+.dark-mode {
+  --scalar-background-1: #231f20;
+  --scalar-background-2: #2a2627;
+  --scalar-background-3: #322e2f;
+  --scalar-background-accent: rgba(0, 157, 210, 0.08);
+  --scalar-color-accent: #009dd2;
+  --scalar-border-color: rgba(255, 255, 255, 0.1);
+  --scalar-font: "aktiv-grotesk", system-ui, -apple-system, sans-serif;
+}
